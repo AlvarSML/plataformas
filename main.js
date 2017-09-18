@@ -3,7 +3,6 @@
 document.addEventListener('DOMContentLoaded', function() {
 		inicio.start();
 	}, false);
-/*asdasd*/
 // jugador
 
 var player = {
