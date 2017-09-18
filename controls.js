@@ -1,10 +1,10 @@
 var keyboard = {
   keys : Array(),
-  keyPress : function() {
-    
+  keyPress : function(key) {
+    keyboard.keys.push(key);
   },
-  keyPresed : function(){
-
+  keyPresed : function(key){
+    return (keyboard.keys.indexOf(key) !== -1);
   },
   keyRelease : function() {
 
