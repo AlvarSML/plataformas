@@ -3,19 +3,11 @@
 document.addEventListener('DOMContentLoaded', function() {
 		inicio.start();
 	}, false);
-<<<<<<< HEAD
-/*sasda*/
+/*asdasd*/
 // jugador
 
 var player = {
 	x: 0,
-=======
-
-// jugador
-
-var player = {
-	x: 0, 
->>>>>>> 521d2fbaac6f9a21ed3be1973b81b53831876f33
 	y: 0,
 	color: "rgb(255,0,0)",
 	vx: 0,
@@ -35,22 +27,13 @@ var player = {
 			if (player.vy < 0) {
 				player.vy = 0;
 			}
-<<<<<<< HEAD
 		}
 
-=======
-		} 
-		
->>>>>>> 521d2fbaac6f9a21ed3be1973b81b53831876f33
 		if ((player.y+10) > player.CollY()){
 			player.vy = 0;
 			player.y =  Math.floor(player.y);
 		}
-<<<<<<< HEAD
 
-=======
-		
->>>>>>> 521d2fbaac6f9a21ed3be1973b81b53831876f33
 		player.y+= player.vy;
 	},
 	spawn: function(){
@@ -73,11 +56,7 @@ var player = {
 	},
 	draw: function(){
 		ctx.fillStyle = player.color;
-<<<<<<< HEAD
 		ctx.fillRect(player.x,player.y,10,10);
-=======
-		ctx.fillRect(player.x,player.y,10,10);		
->>>>>>> 521d2fbaac6f9a21ed3be1973b81b53831876f33
 		ctx.stroke();
 	},
 	CollY: function(){
@@ -85,15 +64,9 @@ var player = {
 		var rigthTile = grid.mesh[Math.floor(player.x/10) + 1][y2];
 		var downTile = grid.mesh[Math.floor(player.x/10)][y2];
 
-<<<<<<< HEAD
 		if ((downTile.fill && y2 - downTile.y < 1) ||
 			(player.x % 10 > 0 && rigthTile.fill && y2 - rigthTile.y < 1)) {
 
-=======
-		if ((downTile.fill && y2 - downTile.y < 1) || 
-			(player.x % 10 > 0 && rigthTile.fill && y2 - rigthTile.y < 1)) {
-			
->>>>>>> 521d2fbaac6f9a21ed3be1973b81b53831876f33
 			player.vy = 0;
 			player.y = downTile.y - 10;
 		}
@@ -124,7 +97,3 @@ var inicio = {
 		mainLoop.iteration();
 	}
 };
-<<<<<<< HEAD
-=======
-
->>>>>>> 521d2fbaac6f9a21ed3be1973b81b53831876f33
