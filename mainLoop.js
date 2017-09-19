@@ -24,10 +24,15 @@ var mainLoop = {
 	update: function(){
 		mainLoop.aps++;
 		move.update();
+
 		player.y += player.vy;
 		player.x += player.vx;
+		
 		player.collision();
 		player.gravity();
+		player.friction();
+
+
 		// friccion
 	},
 	draw: function(){

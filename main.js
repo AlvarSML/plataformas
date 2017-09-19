@@ -27,11 +27,15 @@ var player = {
 			}
 		}
 
-		if ((player.y+10) > player.CollY()){
-			player.vy = 0;
-			player.y =  Math.floor(player.y);
+	},
+	friction: function(){
+		// se mueve hacia la derecha
+		if (player.vx > 0) {
+			player.vx -= 0.1;
 		}
-
+		if (player.vx < 0) {
+			player.vx += 0.1;
+		}
 	},
 	spawn: function(){
 
@@ -56,18 +60,6 @@ var player = {
 		ctx.fillRect(player.x,player.y,10,10);
 		ctx.stroke();
 	},
-	CollY: function(){
-		var y2 = Math.floor(player.y/10) + 1 ;
-		var rigthTile = grid.mesh[Math.floor(player.x/10) + 1][y2];
-		var downTile = grid.mesh[Math.floor(player.x/10)][y2];
-
-		if ((downTile.fill && y2 - downTile.y < 1) ||
-			(player.x % 10 > 0 && rigthTile.fill && y2 - rigthTile.y < 1)) {
-			player.vy = 0;
-			player.y = downTile.y - 10;
-		}
-
-	},
 	collision : function(){
 		//controla la velocidad, devuelve true/false en colision/aire
 		//los puntos del cuadrado son x,x+10,y,y+10
@@ -79,11 +71,13 @@ var player = {
 
 		if (player.vy > 0) {
 			//colisiona abajo
-
+			console.log("bajando");
+			player.collDown();
 		}
 
 		if (player.vy < 0) {
 			//colisiona arriba
+			console.log("subiendo");
 			player.collUp();
 
 		}
@@ -98,7 +92,7 @@ var player = {
 		}
 
 	},
-	collUp : function(){
+	collUp : function(){		
 		var upTile = grid.mesh[Math.floor(player.x / 10)][Math.floor(player.y/10)]
 		var upDTile = grid.mesh[Math.floor(player.x / 10) + 1][Math.floor(player.y/10)]
 
@@ -107,8 +101,22 @@ var player = {
 			player.vy = 0;
 			console.log("colision!");
 			player.y = upTile.y + 10;
+			return true;
 		}
+	},
+	collDown : function(){
+		var y2 = Math.floor(player.y/10) + 1 ;
+		var rigthTile = grid.mesh[Math.floor(player.x/10) + 1][y2];
+		var downTile = grid.mesh[Math.floor(player.x/10)][y2];
+
+		if ((downTile.fill && y2 - downTile.y < 1) ||
+			(player.x % 10 > 0 && rigthTile.fill && y2 - rigthTile.y < 1)) {
+			player.vy = 0;
+			player.y = downTile.y - 10;
+		}
+
 	}
+
 };
 
 // constantes
