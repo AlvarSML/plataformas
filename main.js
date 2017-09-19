@@ -102,10 +102,11 @@ var player = {
 		var upTile = grid.mesh[Math.floor(player.x / 10)][Math.floor(player.y/10)]
 		var upDTile = grid.mesh[Math.floor(player.x / 10) + 1][Math.floor(player.y/10)]
 
-		if (upTile.fill && player.y - (upTile.y * 10) < 1){
+		if ((upTile.fill && player.y - (upTile.y * 10) < 1)
+				|| (upDTile.fill && player.y - (upTile.y * 10) < 1 && player.x % 10 > 0)){
 			player.vy = 0;
 			console.log("colision!");
-			//player.y = downTile.y - 10;
+			player.y = upTile.y + 10;
 		}
 	}
 };

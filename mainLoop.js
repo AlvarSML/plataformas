@@ -28,6 +28,7 @@ var mainLoop = {
 		player.x += player.vx;
 		player.collision();
 		player.gravity();
+		// friccion
 	},
 	draw: function(){
 		mainLoop.fps++;

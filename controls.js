@@ -41,24 +41,23 @@ function keyUpHandler(e) {
 var move = {
   jump : function() {
     console.log("salto");
-    //player.y -= 10;
     player.vy -= 1;
   },
   left : function() {
-
+    player.vx -= 0.5
   },
   rigth : function() {
-
+    player.vx += 0.5
   },
   update : function() {
     if (up) {
       move.jump();
     };
     if (left) {
-
+      move.left();
     };
     if (rigth) {
-
+      move.rigth();
     };
   }
 }
