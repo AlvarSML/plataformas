@@ -8,10 +8,10 @@ function keyDownHandler(e) {
       case 19,38,87:
         up = true;
         break;
-      case 37:
+      case 37,65:
         left = true;
         break;
-      case 39:
+      case 39,68:
         rigth = true;
         break;
       case 40:
@@ -26,10 +26,10 @@ function keyUpHandler(e) {
       case 19,38,87:
         up = false;
         break;
-      case 37:
+      case 37,65:
         left = false;
         break;
-      case 39:
+      case 39,68:
         rigth = false;
         break;
       case 40:
