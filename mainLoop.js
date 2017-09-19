@@ -17,15 +17,16 @@ var mainLoop = {
 			mainLoop.aps = 0;
 			mainLoop.fps = 0;
 		}
-	}, 
+	},
 	stop: function(){
-		
+
 	},
 	update: function(){
 		mainLoop.aps++;
 		move.update();
 		player.y += player.vy;
 		player.x += player.vx;
+		player.collision();
 		player.gravity();
 	},
 	draw: function(){

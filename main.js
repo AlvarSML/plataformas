@@ -12,7 +12,6 @@ var player = {
 	vx: 0,
 	vy: 0,
 	gravity: function() {
-
 		//Comprobar v terminal
 		if (player.vx < TERM) {
 			player.vy += GRAV;
@@ -64,12 +63,51 @@ var player = {
 
 		if ((downTile.fill && y2 - downTile.y < 1) ||
 			(player.x % 10 > 0 && rigthTile.fill && y2 - rigthTile.y < 1)) {
-
 			player.vy = 0;
 			player.y = downTile.y - 10;
 		}
 
 	},
+	collision : function(){
+		//controla la velocidad, devuelve true/false en colision/aire
+		//los puntos del cuadrado son x,x+10,y,y+10
+		//las casillas a tener en cuenta:
+		// . (x,y-1) (arriba)
+		// . (x+1,y-1) (arriba derecha)
+		// . (x,y+1) (abajo)
+		// . (x+1,y+1)	(abajo derecha)
+
+		if (player.vy > 0) {
+			//colisiona abajo
+
+		}
+
+		if (player.vy < 0) {
+			//colisiona arriba
+			player.collUp();
+
+		}
+
+		if (player.vx > 0){
+			// colisiona derecha
+		}
+
+
+		if (player.vx < 0){
+			// colisiona izquierda
+		}
+
+	},
+	collUp : function(){
+		var upTile = grid.mesh[Math.floor(player.x / 10)][Math.floor(player.y/10)]
+		var upDTile = grid.mesh[Math.floor(player.x / 10) + 1][Math.floor(player.y/10)]
+
+		if (upTile.fill && player.y - (upTile.y * 10) < 1){
+			player.vy = 0;
+			console.log("colision!");
+			//player.y = downTile.y - 10;
+		}
+	}
 };
 
 // constantes
