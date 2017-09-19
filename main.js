@@ -33,7 +33,6 @@ var player = {
 			player.y =  Math.floor(player.y);
 		}
 
-		player.y+= player.vy;
 	},
 	spawn: function(){
 
@@ -70,12 +69,12 @@ var player = {
 			player.y = downTile.y - 10;
 		}
 
-	}
+	},
 };
 
 // constantes
 
-const GRAV = 0.1;
+const GRAV = 0.5;
 const TERM = 100;
 const LIM = 380;
 

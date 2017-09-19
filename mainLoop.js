@@ -23,8 +23,10 @@ var mainLoop = {
 	},
 	update: function(){
 		mainLoop.aps++;
+		move.update();
+		player.y += player.vy;
+		player.x += player.vx;
 		player.gravity();
-
 	},
 	draw: function(){
 		mainLoop.fps++;
