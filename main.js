@@ -30,12 +30,14 @@ var player = {
 	},
 	friction: function(){
 		// se mueve hacia la derecha
+		/*
 		if (player.vx > 0) {
 			player.vx -= 0.1;
 		}
 		if (player.vx < 0) {
 			player.vx += 0.1;
 		}
+		*/
 	},
 	spawn: function(){
 
@@ -71,7 +73,6 @@ var player = {
 
 		if (player.vy > 0) {
 			//colisiona abajo
-			console.log("bajando");
 			player.collDown();
 		}
 
@@ -84,6 +85,7 @@ var player = {
 
 		if (player.vx > 0){
 			// colisiona derecha
+			player.collRigth();
 		}
 
 
@@ -92,7 +94,7 @@ var player = {
 		}
 
 	},
-	collUp : function(){		
+	collUp : function(){
 		var upTile = grid.mesh[Math.floor(player.x / 10)][Math.floor(player.y/10)]
 		var upDTile = grid.mesh[Math.floor(player.x / 10) + 1][Math.floor(player.y/10)]
 
@@ -115,6 +117,17 @@ var player = {
 			player.y = downTile.y - 10;
 		}
 
+	},
+	collRigth : function(){
+		var x2 = Math.floor(player.x/10) + 1;
+		var y2 = Math.floor(player.y/10) + 1;
+		var rigthTile = grid.mesh[x2][y2];
+		var rdownTile = grid.mesh[x2][y2+1];
+
+		if (rigthTile.fill && player.x - rigthTile.x < 1) {
+			player.vx = 0;
+			player.x = rigthTile.x;
+		}
 	}
 
 };

@@ -28,9 +28,13 @@ function keyUpHandler(e) {
         break;
       case 37,65:
         left = false;
+        //apaño
+        player.vx=0;
         break;
       case 39,68:
         rigth = false;
+        //apaño
+        player.vx=0;
         break;
       case 40:
         down = false;
@@ -44,10 +48,10 @@ var move = {
     player.vy -= 1;
   },
   left : function() {
-    player.vx -= 0.5
+    if(player.vx>-0.7)player.vx -= 0.4
   },
   rigth : function() {
-    player.vx += 0.5
+    if(player.vx<0.7)player.vx += 0.4
   },
   update : function() {
     if (up) {
