@@ -91,6 +91,7 @@ var player = {
 
 		if (player.vx < 0){
 			// colisiona izquierda
+			player.collLeft();
 		}
 
 	},
@@ -120,13 +121,22 @@ var player = {
 	},
 	collRigth : function(){
 		var x2 = Math.floor(player.x/10) + 1;
-		var y2 = Math.floor(player.y/10) + 1;
+		var y2 = Math.floor(player.y/10);
 		var rigthTile = grid.mesh[x2][y2];
-		var rdownTile = grid.mesh[x2][y2+1];
 
-		if (rigthTile.fill && player.x - rigthTile.x < 1) {
+		if (rigthTile.fill && player.x - rigthTile.x< 0) {
 			player.vx = 0;
-			player.x = rigthTile.x;
+			player.x = rigthTile.x - 10;
+		}
+	},
+	collLeft : function() {
+		var x = Math.floor(player.x/10);
+		var y = Math.floor(player.y/10);
+		var leftTile = grid.mesh[x][y];
+
+		if (leftTile.fill && player.x - (leftTile.x)< 0) {
+			player.vx = 0;
+			player.x = leftTile.x;
 		}
 	}
 
