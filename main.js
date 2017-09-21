@@ -136,7 +136,7 @@ var player = {
 		var lTile = grid.mesh[px][py];
 		var lDTile = grid.mesh[px][py+1];
 
-		if (lTile.fill) {
+		if (lTile.fill || lDTile.fill && (player.y % 10 > 0)) {
 			console.log("hit");
 			player.vx = 0;
 			player.x = lTile.x + 10;
