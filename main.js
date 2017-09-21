@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
 var player = {
 	x: 0,
 	y: 0,
+	py: null,
+	px: null,
 	color: "rgb(255,0,0)",
 	vx: 0,
 	vy: 0,
@@ -70,6 +72,8 @@ var player = {
 		// . (x+1,y-1) (arriba derecha)
 		// . (x,y+1) (abajo)
 		// . (x+1,y+1)	(abajo derecha)
+		player.px = Math.floor(player.x / 10);
+		player.py = Math.floor(player.y / 10);
 
 		if (player.vy > 0) {
 			//colisiona abajo
@@ -78,11 +82,9 @@ var player = {
 
 		if (player.vy < 0) {
 			//colisiona arriba
-			console.log("subiendo");
 			player.collUp();
 
 		}
-
 		if (player.vx > 0){
 			// colisiona derecha
 			player.collRigth();
@@ -96,55 +98,47 @@ var player = {
 
 	},
 	collUp : function(){
-		var upTile = grid.mesh[Math.floor(player.x / 10)][Math.floor(player.y/10)]
-		var upDTile = grid.mesh[Math.floor(player.x / 10) + 1][Math.floor(player.y/10)]
+		var upTile = grid.mesh[player.px][player.py];
+		var upDTile = grid.mesh[player.px + 1][player.py];
 
-		if ((upTile.fill && player.y - (upTile.y * 10) < 1)
-				|| (upDTile.fill && player.y - (upTile.y * 10) < 1 && player.x % 10 > 0)){
+		if (upTile.fill || (upDTile.fill && player.x % 10 > 0)){
 			player.vy = 0;
-			console.log("colision!");
 			player.y = upTile.y + 10;
 			return true;
 		}
 	},
 	collDown : function(){
-		var y2 = Math.floor(player.y/10) + 1 ;
-		var rigthTile = grid.mesh[Math.floor(player.x/10) + 1][y2];
-		var downTile = grid.mesh[Math.floor(player.x/10)][y2];
 
-		if ((downTile.fill && y2 - downTile.y < 1) ||
-			(player.x % 10 > 0 && rigthTile.fill && y2 - rigthTile.y < 1)) {
+		var downTile = grid.mesh[player.px][player.py + 1];
+		var downDTile = grid.mesh[player.px + 1][player.py + 1];
+
+		if (downTile.fill || (downDTile.fill && player.x % 10 > 0)) {
 			player.vy = 0;
 			player.y = downTile.y - 10;
 		}
 
 	},
 	collRigth : function(){
-		var x2 = Math.floor(player.x/10) + 1;
-		var y2 = Math.floor(player.y/10);
-		var rigthTile = grid.mesh[x2][y2];
+		var rigthTile = grid.mesh[player.px+1][player.py];
+		var rDtile = grid.mesh[player.px+1][player.py+1];
 
-		if (rigthTile.fill && player.x - rigthTile.x <= 0) {
+		if (rigthTile.fill || rDtile.fill && (player.y % 10 > 0)) {
 			player.vx = 0;
 			player.x = rigthTile.x - 10;
 		}
 	},
 	collLeft : function() {
-		// tocar
-		var px = Math.floor(player.x/10);
-		var py = Math.floor(player.y/10);
-		var lTile = grid.mesh[px][py];
-		var lDTile = grid.mesh[px][py+1];
+		var lTile = grid.mesh[player.px][player.py];
+		var lDTile = grid.mesh[player.px][player.py+1];
 
 		if (lTile.fill || lDTile.fill && (player.y % 10 > 0)) {
-			console.log("hit");
 			player.vx = 0;
 			player.x = lTile.x + 10;
-		}		
+		}
 	}
-
 };
 
+/////////////////////////\--------funciones-------/\\\\\\\\\\\\\\\\\\\\\\\
 // constantes
 
 const GRAV = 0.5;

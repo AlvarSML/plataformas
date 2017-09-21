@@ -44,7 +44,6 @@ function keyUpHandler(e) {
 
 var move = {
   jump : function() {
-    console.log("salto");
     player.vy -= 1;
   },
   left : function() {

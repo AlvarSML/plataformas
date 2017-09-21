@@ -27,7 +27,7 @@ var mainLoop = {
 
 		player.y += player.vy;
 		player.x += player.vx;
-		
+
 		player.collision();
 		player.gravity();
 		player.friction();
