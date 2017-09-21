@@ -124,20 +124,23 @@ var player = {
 		var y2 = Math.floor(player.y/10);
 		var rigthTile = grid.mesh[x2][y2];
 
-		if (rigthTile.fill && player.x - rigthTile.x< 0) {
+		if (rigthTile.fill && player.x - rigthTile.x <= 0) {
 			player.vx = 0;
 			player.x = rigthTile.x - 10;
 		}
 	},
 	collLeft : function() {
-		var x = Math.floor(player.x/10);
-		var y = Math.floor(player.y/10);
-		var leftTile = grid.mesh[x][y];
+		// tocar
+		var px = Math.floor(player.x/10);
+		var py = Math.floor(player.y/10);
+		var lTile = grid.mesh[px][py];
+		var lDTile = grid.mesh[px][py+1];
 
-		if (leftTile.fill && player.x - (leftTile.x)< 0) {
+		if (lTile.fill) {
+			console.log("hit");
 			player.vx = 0;
-			player.x = leftTile.x;
-		}
+			player.x = lTile.x + 10;
+		}		
 	}
 
 };
