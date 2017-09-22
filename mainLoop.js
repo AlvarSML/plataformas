@@ -40,5 +40,6 @@ var mainLoop = {
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		grid.update();
 		player.draw();
+		colP.color();
 	}
 };

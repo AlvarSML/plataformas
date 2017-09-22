@@ -3,7 +3,7 @@ var colP = {
   color : function(){
     for (var y = 0; y < 40; y ++){
 			for (var x = 0; x < 40; x ++){
-				grid.mesh[x][y].color = colP.paleta[Math.floor(Math.random() * 3)];
+				grid.mesh[x][y].color = colP.paleta[Math.floor(Math.random() * 4)];
 			}
 		}
   }
