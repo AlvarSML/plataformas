@@ -1,7 +1,7 @@
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 
-var up = false,down = false,left = false,rigth = false, grenade = false;
+var up = false,down = false,left = false,rigth = false;
 
 function keyDownHandler(e) {
    switch(e.keyCode) {
@@ -19,7 +19,7 @@ function keyDownHandler(e) {
         break;
       case 32:
         grenade = true;
-        console.log("espacio pulsado");
+        player.addGr();
         break;
     }
   };
@@ -68,10 +68,6 @@ var move = {
     };
     if (rigth) {
       move.rigth();
-    };
-    if (grenade /*&& player.grenade == null*/){
-      player.grenade = new grenade();
-      console.log("pun");
     }
   }
 }

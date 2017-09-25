@@ -31,11 +31,14 @@ var mainLoop = {
 		player.collision();
 		player.gravity();
 
+
+
 	},
 	draw: function(){
 		mainLoop.fps++;
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		grid.update();
 		player.draw();
+		player.actBomb();
 	}
 };

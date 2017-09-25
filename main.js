@@ -3,6 +3,32 @@
 document.addEventListener('DOMContentLoaded', function() {
 		inicio.start();
 	}, false);
+
+// armas
+
+
+function bomb() {
+  this.x = player.x;
+  this.y = player.y;
+  this.time = 5;
+  this.color = "rgb(0,255,0)";
+
+  this.draw = function(){
+    ctx.fillRect(this.x,this.y,10,10);
+    ctx.fillStyle = this.color;
+    ctx.stroke();
+  }
+
+  this.timer = function(){
+    if (mainLoop.aps == 59 && this.time > 0 ){this.time--};
+    if (this.time <= 0) {
+			console.log("Boom")
+			player.bm = null;
+		};
+  }
+
+};
+
 // jugador
 
 var player = {
@@ -13,7 +39,7 @@ var player = {
 	color: "rgb(255,0,0)",
 	vx: 0,
 	vy: 0,
-	grenade: null,
+	bm: null,
 	gravity: function() {
 		//Comprobar v terminal
 		if (player.vx < TERM) {
@@ -125,31 +151,19 @@ var player = {
 			player.vx = 0;
 			player.x = lTile.x + 10;
 		}
+	},
+	addGr : function(){
+		if ( player.bm == null){
+      player.bm = new bomb(player.x,player.y);
+      console.log("pun");
+		}
+	},
+	actBomb : function(){
+		if (player.bm != null){
+			player.bm.draw();
+			player.bm.timer();
+		}
 	}
-};
-
-
-function grenade(px,py) {
-  this.x = player.x;
-  this.y = player.y;
-  this.time = 5;
-  this.color = "rgb(0,0,0)";
-
-  this.draw = function(){
-    ctx.fillRect(this.x,this.y,10,10);
-    ctx.fillStyle = this.color;
-    ctx.stroke();
-  }
-
-  this.timer = function(){
-    if (mainLoop.aps == 59 && this.time > 0 ){this.time--};
-    if (this.time <= 0) {
-			console.log("Boom")
-			player.grenade = null;
-		};
-  }
-  this.timer();
-
 };
 
 
