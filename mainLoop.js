@@ -30,6 +30,7 @@ var mainLoop = {
 
 		player.collision();
 		player.gravity();
+
 	},
 	draw: function(){
 		mainLoop.fps++;

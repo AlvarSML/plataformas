@@ -19,6 +19,7 @@ function keyDownHandler(e) {
         break;
       case 32:
         grenade = true;
+        console.log("espacio pulsado");
         break;
     }
   };
@@ -68,5 +69,9 @@ var move = {
     if (rigth) {
       move.rigth();
     };
+    if (grenade /*&& player.grenade == null*/){
+      player.grenade = new grenade();
+      console.log("pun");
+    }
   }
 }

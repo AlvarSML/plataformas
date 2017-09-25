@@ -15,13 +15,13 @@ var grid = {
 			for (var x = 0; x < 40; x ++){
 				grid.mesh[x][y].draw();
 			}
-		}		
+		}
 	},
 	generate: function() {
 		for (var y = 0; y < 40; y ++){
 			for (var x = 0; x < 40; x ++){
 				grid.mesh[x][y] = new point((x*10),(y*10));
-				grid.mesh[x][y].draw();		
+				grid.mesh[x][y].draw();
 			}
 		}
 		ctx.stroke();
@@ -71,8 +71,6 @@ function point(px,py) {
 
 	}
 };
-
-
 // cuenta el numero de puntos por lado
 function puntosLados(px,py,tipo){
 	var pts = 0;

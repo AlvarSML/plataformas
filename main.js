@@ -13,7 +13,7 @@ var player = {
 	color: "rgb(255,0,0)",
 	vx: 0,
 	vy: 0,
-	grenades: [],
+	grenade: null,
 	gravity: function() {
 		//Comprobar v terminal
 		if (player.vx < TERM) {
@@ -128,6 +128,32 @@ var player = {
 	}
 };
 
+
+function grenade(px,py) {
+  this.x = player.x;
+  this.y = player.y;
+  this.time = 5;
+  this.color = "rgb(0,0,0)";
+
+  this.draw = function(){
+    ctx.fillRect(this.x,this.y,10,10);
+    ctx.fillStyle = this.color;
+    ctx.stroke();
+  }
+
+  this.timer = function(){
+    if (mainLoop.aps == 59 && this.time > 0 ){this.time--};
+    if (this.time <= 0) {
+			console.log("Boom")
+			player.grenade = null;
+		};
+  }
+  this.timer();
+
+};
+
+
+
 /////////////////////////\--------funciones-------/\\\\\\\\\\\\\\\\\\\\\\\
 // constantes
 
@@ -144,6 +170,7 @@ grid.soft();
 colP.color();
 
 player.spawn();
+
 // inicio del loop principal
 
 
