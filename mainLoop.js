@@ -30,16 +30,11 @@ var mainLoop = {
 
 		player.collision();
 		player.gravity();
-		player.friction();
-
-
-		// friccion
 	},
 	draw: function(){
 		mainLoop.fps++;
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		grid.update();
 		player.draw();
-		colP.color();
 	}
 };

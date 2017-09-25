@@ -13,6 +13,7 @@ var player = {
 	color: "rgb(255,0,0)",
 	vx: 0,
 	vy: 0,
+	grenades: [],
 	gravity: function() {
 		//Comprobar v terminal
 		if (player.vx < TERM) {
@@ -29,17 +30,6 @@ var player = {
 			}
 		}
 
-	},
-	friction: function(){
-		// se mueve hacia la derecha
-		/*
-		if (player.vx > 0) {
-			player.vx -= 0.1;
-		}
-		if (player.vx < 0) {
-			player.vx += 0.1;
-		}
-		*/
 	},
 	spawn: function(){
 
@@ -151,6 +141,7 @@ grid.soft();
 grid.soft();
 grid.soft();
 grid.soft();
+colP.color();
 
 player.spawn();
 // inicio del loop principal

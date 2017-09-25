@@ -1,7 +1,7 @@
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 
-var up = false,down = false,left = false,rigth = false;
+var up = false,down = false,left = false,rigth = false, grenade = false;
 
 function keyDownHandler(e) {
    switch(e.keyCode) {
@@ -16,6 +16,9 @@ function keyDownHandler(e) {
         break;
       case 40:
         down = true;
+        break;
+      case 32:
+        grenade = true;
         break;
     }
   };
@@ -38,6 +41,9 @@ function keyUpHandler(e) {
         break;
       case 40:
         down = false;
+        break;
+      case 32:
+        grenade = false;
         break;
     }
   };
